@@ -1,28 +1,28 @@
-import { DataTypes, Model } from 'sequelize';
-import sequelize from '../sequelize';
+import { DataTypes, Model } from 'sequelize'
+import sequelize from '../sequelize'
 
 interface ProductoAttributes {
-  handle: string;
-  title: string;
-  description: string;
-  sku: string;
-  grams: number;
-  stock: number;
-  price: number;
-  compare_price: number;
-  barcode: string | null;
+  handle: string
+  title: string
+  description: string
+  sku: string
+  grams: number
+  stock: number
+  price: number
+  compare_price: number
+  barcode: string | null
 }
 
 class Producto extends Model<ProductoAttributes> implements ProductoAttributes {
-  public handle!: string;
-  public title!: string;
-  public description!: string;
-  public sku!: string;
-  public grams!: number;
-  public stock!: number;
-  public price!: number;
-  public compare_price!: number;
-  public barcode!: string | null;
+  public handle!: string
+  public title!: string
+  public description!: string
+  public sku!: string
+  public grams!: number
+  public stock!: number
+  public price!: number
+  public compare_price!: number
+  public barcode!: string | null
 }
 
 Producto.init({
@@ -68,6 +68,6 @@ Producto.init({
   sequelize,
   modelName: 'Producto',
   tableName: 'productos'
-});
+})
 
-export default Producto;
+export default Producto

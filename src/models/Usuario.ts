@@ -1,26 +1,23 @@
-import { DataTypes, Model } from 'sequelize';
-import sequelize from '../sequelize';
+import { DataTypes, Model } from 'sequelize'
+import sequelize from '../sequelize'
 
 interface UsuarioAttributes {
-  id: number;
-  name: string;
-  user: string;
-  password: string;
+  name: string
+  user: string
+  password: string
 }
 
 class Usuario extends Model<UsuarioAttributes> implements UsuarioAttributes {
-  public id!: number;
-  public name!: string;
-  public user!: string;
-  public password!: string;
+  public id!: number
+  public name!: string
+  public user!: string
+  public password!: string
+
+  public readonly createdAt!: Date
+  public readonly updatedAt!: Date
 }
 
 Usuario.init({
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -37,6 +34,6 @@ Usuario.init({
   sequelize,
   modelName: 'Usuario',
   tableName: 'usuarios'
-});
+})
 
-export default Usuario;
+export default Usuario
