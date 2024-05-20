@@ -20,11 +20,6 @@ Para crear la base de datos y las tablas con los datos, ejecuta el script SQL pr
 
 Para más detalles sobre la estructura de la base de datos utilizada por este proyecto, consulta la documentación en [este enlace](database/README.md).
 
-## Configuración
-
-Copia el archivo .env.example y nómbralo .env.
-Completa las variables de entorno en el archivo .env según sea necesario.
-
 ## Uso
 
 Ejecuta el servidor en modo desarrollo con el comando `npm run dev`.
