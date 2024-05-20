@@ -18,7 +18,7 @@ Creación de la Base de Datos y Tablas
 
 Para crear la base de datos y las tablas con los datos, ejecuta el script SQL proporcionado en tu sistema de gestión de bases de datos (por ejemplo, MySQL Workbench, phpMyAdmin, etc.).
 
-Para más detalles sobre la estructura de la base de datos utilizada por este proyecto, consulta la documentación en [este enlace](database/README.md).
+Para más detalles sobre la estructura de la base de datos utilizada por este proyecto, consulta la documentación en [este enlace](src/database/README.md).
 
 ## Uso
 
