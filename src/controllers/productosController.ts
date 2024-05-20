@@ -10,6 +10,21 @@ export const obtenerProductos = async (req: Request, res: Response) => {
   }
 }
 
+export const obtenerProductoPorId = async (req: Request, res: Response) => {
+  try {
+    const { handle } = req.params;
+    const producto = await Producto.findByPk(handle);
+
+    if (producto) {
+      res.json(producto);
+    } else {
+      res.status(404).send('Producto no encontrado')
+    }
+  } catch (error) {
+    res.status(500).send('Error al obtener el producto')
+  }
+}
+
 export const crearProducto = async (req: Request, res: Response) => {
   try {
     const producto = await Producto.create(req.body)

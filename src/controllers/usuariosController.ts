@@ -14,7 +14,7 @@ export const registrarUsuario = async (req: Request, res: Response) => {
   }
 }
 
-export const recuperarContraseña = async (req: Request, res: Response) => {
+export const recuperarContrasena = async (req: Request, res: Response) => {
   try {
     const { user, newPassword } = req.body
     const usuario = await Usuario.findOne({ where: { user } })
@@ -47,11 +47,28 @@ export const autenticarUsuario = async (req: Request, res: Response) => {
   }
 }
 
-export const verUsuarios = async (req: Request, res: Response) => {
+export const cambioContrasena = async (req: Request, res: Response) => {
+  const { user, oldPassword, newPassword } = req.body
+
   try {
-    const usuarios = await Usuario.findAll()
-    res.status(200).json(usuarios)
+    const usuario = await Usuario.findOne({ where: { user } })
+
+    if (!usuario) {
+      return res.status(404).send('Usuario no encontrado')
+    }
+
+    const isMatch = await bcrypt.compare(oldPassword, usuario.password)
+    if (!isMatch) {
+      return res.status(400).send('Contraseña antigua incorrecta')
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10)
+
+    usuario.password = hashedPassword;
+    await usuario.save()
+
+    res.status(200).send('Contraseña cambiada exitosamente')
   } catch (error) {
-    res.status(500).json({ error: 'Error al obtener los usuarios' })
+    res.status(500).send('Error al cambiar la contraseña')
   }
-}
+};

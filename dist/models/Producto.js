@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const sequelize_2 = __importDefault(require("../sequelize"));
+const database_1 = __importDefault(require("../config/database"));
 class Producto extends sequelize_1.Model {
 }
 Producto.init({
@@ -47,7 +47,7 @@ Producto.init({
         allowNull: true
     }
 }, {
-    sequelize: sequelize_2.default,
+    sequelize: database_1.default,
     modelName: 'Producto',
     tableName: 'productos'
 });
