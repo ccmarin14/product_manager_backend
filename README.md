@@ -1,2 +1,2 @@
-# product_manager_front
-Frontend - Administrador de productos
+# product_manager_backend
+Backend - Administrador de productos

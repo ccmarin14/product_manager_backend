@@ -23,6 +23,10 @@ const router = express.Router()
  *   get:
  *     summary: Obtiene todos los productos
  *     tags: [Productos]
+ *     security:
+ *       - bearerAuth: []
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Lista de productos
@@ -43,6 +47,8 @@ router.get('/productos', verificarJWT, obtenerProductos)
  *   get:
  *     summary: Obtiene un producto por handle
  *     tags: [Productos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: handle
@@ -70,6 +76,8 @@ router.get('/:handle', verificarJWT, obtenerProductoPorId);
  *   post:
  *     summary: Crea un nuevo producto
  *     tags: [Productos]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -90,6 +98,8 @@ router.post('/productos', verificarJWT, crearProducto)
  *   put:
  *     summary: Actualiza un producto existente
  *     tags: [Productos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: handle
@@ -119,6 +129,8 @@ router.put('/productos/:handle', verificarJWT, actualizarProducto)
  *   delete:
  *     summary: Elimina un producto
  *     tags: [Productos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: handle

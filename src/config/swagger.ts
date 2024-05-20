@@ -1,6 +1,8 @@
 import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 import { Express } from 'express'
+import { productoSchema } from '../schemas/productoSchema'
+import { usuarioSchema } from '../schemas/usuarioSchema'
 
 const options = {
   definition: {
@@ -14,15 +16,34 @@ const options = {
       {
         url: 'http://localhost:3000'
       }
+    ],
+    components: {
+      schemas: {
+        ...productoSchema,
+        ...usuarioSchema
+      },
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          description: 'Introduce el token JWT para autenticar'
+        }
+      }
+    },
+    security: [
+      {
+        bearerAuth: []
+      }
     ]
   },
-  apis: ['./src/routes/*.ts']
+  apis: ['./src/routes/*.ts', './src/models/*.ts']
 };
 
-const swaggerSpec = swaggerJSDoc(options);
+const swaggerSpec = swaggerJSDoc(options)
 
 const setupSwagger = (app: Express) => {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-};
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+}
 
-export default setupSwagger;
+export default setupSwagger
